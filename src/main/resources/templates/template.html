@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>CRUD API</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <style>
+        /* Custom styles */
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-link {
+            color: #777;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: #f8f9fa;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation bar -->
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Toni sucursal manager</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/home}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/sucursals}">Sucursals</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Content -->
+<div class="container">
+    <!-- Add your content here -->
+</div>
+
+<!-- Footer -->
+<footer th:fragment="footer">
+    <div class="container text-center">
+        <p>&copy; 2023 My Webpage. All rights reserved.</p>
+    </div>
+    <script type="text/javascript" th:href="@{/js/bootstrap.bundle.min.js}"></script>
+</footer>
+</body>
+</html>

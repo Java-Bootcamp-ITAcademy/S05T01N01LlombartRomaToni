@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template::head">
+    <style>
+        /* Custom styles */
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-color: #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0069d9;
+        }
+    </style>
+</head>
+<body>
+<header th:replace="template::header"></header>
+<div class="container mt-4">
+    <form th:action="@{/sucursals/add}" th:object="${sucursal}" method="post">
+        <div class="form-group row">
+            <input type="hidden" th:field="*{id}">
+            <label class="col-md-2 col-form-label form-label" for="name">Name</label>
+            <div class="col-md-6 mt-2 mt-md-0">
+                <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Sucursal name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label form-label" for="country">Country</label>
+            <div class="col-md-6">
+                <input type="text" th:field="*{country}" class="form-control" id="country" placeholder="Country">
+            </div>
+        </div>
+        <div class="form-group row mt-4">
+            <div class="offset-md-2 col-md-6">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </form>
+</div>
+<footer th:replace="template::footer"></footer>
+</body>
+</html>
