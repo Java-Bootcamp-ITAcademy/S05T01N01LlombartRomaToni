@@ -4,10 +4,7 @@ import cat.itacademy.barcelonactiva.llombartroma.toni.s05.t01.n01.S05T01N01Llomb
 import cat.itacademy.barcelonactiva.llombartroma.toni.s05.t01.n01.S05T01N01LlombartRomaToni.model.dto.SucursalDTO;
 import cat.itacademy.barcelonactiva.llombartroma.toni.s05.t01.n01.S05T01N01LlombartRomaToni.model.repository.SucursalRepository;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -53,20 +50,18 @@ public class SucursalService {
     /* Implements how API retrieves a Sucursal by name */
     public Optional<List<SucursalDTO>> searchSucursalByName(String name) {
         List<Sucursal> sucursals = sucursalRepository.searchSucursalByName(name).get();
-        List<SucursalDTO> sucursalsDTO = sucursals.stream().map(s->fromSucursalToSucursalDTO(s)).collect(Collectors.toList());
+        List<SucursalDTO> sucursalsDTO = sucursals.stream().map(this::fromSucursalToSucursalDTO).collect(Collectors.toList());
         return Optional.of(sucursalsDTO);
     }
     /* Transforms from Sucursal to SucursalDTO */
     private SucursalDTO fromSucursalToSucursalDTO(Sucursal sucursal) {
         ModelMapper modelMapper = new ModelMapper();
-        SucursalDTO sucursalDTO = modelMapper.map(sucursal, SucursalDTO.class);
-        return sucursalDTO;
+        return modelMapper.map(sucursal, SucursalDTO.class);
     }
     /* Transforms from SucursalDTO to Sucursal */
     private Sucursal fromSucursalDTOToSucursal(SucursalDTO sucursalDTO) {
         ModelMapper modelMapper = new ModelMapper();
-        Sucursal sucursal = modelMapper.map(sucursalDTO, Sucursal.class);
-        return sucursal;
+        return modelMapper.map(sucursalDTO, Sucursal.class);
     }
 
 
